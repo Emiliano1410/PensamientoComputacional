@@ -1,2 +1,2 @@
-# PensamientoComputacional
-Almacenamiento de trabajos
+## Football Guesser ⚽
+Este programa realiza una serie de preguntas sobre diferentes estadísticas de dos equipos que jugaran un partido de fútbol. Las estadísticas individuales que solicita son: victorias, derrotas, empates, goles anotados, goles en contra, puntos obtenidos durante el torneo, victorias en los últimos cinco partidos, derrotas en los últimos cinco partidos, local o visitante, número de jugadores titulares lesionados, valor de la plantilla y momento anímico. En base a tus respuestas que proporciones, el programa tratará de predecir cual será el resultado más probable de que suceda en el tiempo regular del partido ya sea victoria, empate o derrota de los equipos correspondientes.
