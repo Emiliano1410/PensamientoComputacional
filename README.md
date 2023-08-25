@@ -64,7 +64,7 @@ ponderacion_dcinco = -1
 ponderacion_titulares = -1
 ponderacion_promedio = 1
 
-PUNTAJE1 = (
+PUNTAJE1 = 
     victorias1 * ponderacion_victorias
     + derrotas1 * ponderacion_derrotas
     + empates1 * ponderacion_empates
