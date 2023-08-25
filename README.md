@@ -1,11 +1,11 @@
 ## Football Guesser ⚽
-Este programa realiza una serie de preguntas sobre diferentes estadísticas de dos equipos que jugaran un partido de fútbol. Las estadísticas individuales que solicita son: victorias, derrotas, empates, goles anotados, goles en contra, puntos obtenidos durante el torneo, victorias en los últimos cinco partidos, derrotas en los últimos cinco partidos, número de jugadores titulares lesionados y promedio de goles por partido. En base a tus respuestas que proporciones, el programa tratará de predecir cual será el resultado más probable de que suceda en el tiempo regular del partido ya sea victoria, empate o derrota de los equipos correspondientes.
+Este programa realiza una serie de preguntas sobre diferentes estadísticas de dos equipos que jugaran un partido de fútbol. Las estadísticas individuales que solicita son: victorias, derrotas, empates, goles anotados, goles en contra, puntos obtenidos durante el torneo, victorias en los últimos cinco partidos, derrotas en los últimos cinco partidos, número de jugadores titulares lesionados, promedio de goles por partido, etc. En base a tus respuestas que proporciones, el programa tratará de predecir cual será el resultado más probable de que suceda en el tiempo regular del partido ya sea victoria, empate o derrota de los equipos correspondientes.
 
 Es importante destacar que no hay una única estadística que garantice el éxito en la predicción de resultados de partidos de fútbol. Es una combinación de múltiples factores y datos lo que puede llevar a resultados más precisos. Además, el fútbol es un deporte impredecible, y siempre habrá una cantidad de incertidumbre involucrada en las predicciones.
 
 ALGORITMO:
 
-ENTRADA: EQUIPO1, EQUIPO2, PUNTAJE1, PUNTAJE2, victorias1, victorias2, derrotas1, derrotas2, empates1, empates2, anotados1, anotados2, contra1, contra2, puntos1, puntos2, partidos1, partidos2, cinco1, cinco2, titulares1, titulares2, promedio1, promedio2.
+ENTRADA: EQUIPO1, EQUIPO2, PUNTAJE1, PUNTAJE2, victorias1, victorias2, derrotas1, derrotas2, empates1, empates2, anotados1, anotados2, contra1, contra2, puntos1, puntos2, partidos1, partidos2, dcinco1, dcinco2, titulares1, titulares2, promedio1, promedio2.
 
 PROCESO:
 
@@ -53,9 +53,40 @@ Pedir el promedio1 de goles por partido del EQUIPO1
 
 Pedir el promedio2 de goles por partido del EQUIPO2
 
-PUNTAJE1=victorias1-derrotas1-empates1+anotados1-contra1+puntos1+partidos1-cinco1-titulares1+promedio1
+ponderacion_victorias = 3
+ponderacion_derrotas = -1
+ponderacion_empates = 1
+ponderacion_anotados = 2
+ponderacion_contra = -1
+ponderacion_puntos = 1
+ponderacion_partidos = 2
+ponderacion_dcinco = -1
+ponderacion_titulares = -1
+ponderacion_promedio = 1
 
-PUNTAJE2=victorias2-derrotas2-empates2+anotados2-contra2+puntos2+partidos2-cinco2-titulares2+promedio2
+PUNTAJE1 = (
+    victorias1 * ponderacion_victorias
+    + derrotas1 * ponderacion_derrotas
+    + empates1 * ponderacion_empates
+    + anotados1 * ponderacion_anotados
+    + contra1 * ponderacion_contra
+    + puntos1 * ponderacion_puntos
+    + partidos1 * ponderacion_partidos
+    + dcinco1 * ponderacion_dcinco
+    + titulares1 * ponderacion_titulares
+    + promedio1 * ponderacion_promedio
+
+PUNTAJE2 =
+    victorias2 * ponderacion_victorias
+    + derrotas2 * ponderacion_derrotas
+    + empates2 * ponderacion_empates
+    + anotados2 * ponderacion_anotados
+    + contra2 * ponderacion_contra
+    + puntos2 * ponderacion_puntos
+    + partidos2 * ponderacion_partidos
+    + dcinco2 * ponderacion_dcinco
+    + titulares2 * ponderacion_titulares
+    + promedio2 * ponderacion_promedio
 
 Si PUNTAJE1 > PUNTAJE2 escribir “EQUIPO1 GANA”
 
