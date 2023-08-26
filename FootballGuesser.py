@@ -38,3 +38,36 @@ ponderacion_dcinco = -1
 ponderacion_titulares = -1
 ponderacion_promedio = 1
 
+PUNTAJE1 = (
+    victorias1 * ponderacion_victorias
+    + derrotas1 * ponderacion_derrotas
+    + empates1 * ponderacion_empates
+    + anotados1 * ponderacion_anotados
+    + contra1 * ponderacion_contra
+    + puntos1 * ponderacion_puntos
+    + partidos1 * ponderacion_partidos
+    + dcinco1 * ponderacion_dcinco
+    + titulares1 * ponderacion_titulares
+    + promedio1 * ponderacion_promedio
+)
+
+PUNTAJE2 = (
+    victorias2 * ponderacion_victorias
+    + derrotas2 * ponderacion_derrotas
+    + empates2 * ponderacion_empates
+    + anotados2 * ponderacion_anotados
+    + contra2 * ponderacion_contra
+    + puntos2 * ponderacion_puntos
+    + partidos2 * ponderacion_partidos
+    + dcinco2 * ponderacion_dcinco
+    + titulares2 * ponderacion_titulares
+    + promedio2 * ponderacion_promedio
+)
+
+# Comparar puntajes y mostrar resultado
+if PUNTAJE1 > PUNTAJE2:
+    print(f"{EQUIPO1} GANA")
+elif PUNTAJE2 > PUNTAJE1:
+    print(f"{EQUIPO2} GANA")
+else:
+    print("EMPATE")
