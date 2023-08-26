@@ -26,6 +26,15 @@ dcinco2 = int(input(f"Ingrese el número de derrotas en los últimos cinco parti
 titulares2 = int(input(f"Ingrese el número de jugadores titulares lesionados para {EQUIPO2}: "))
 promedio2 = float(input(f"Ingrese el promedio de goles por partido para {EQUIPO2}: "))
 
-#Calcular los puntajes
-PUNTAJE1 = victorias1 - derrotas1 - empates1 + anotados1 - contra1 + puntos1 + partidos1 - dcinco1 - titulares1 + promedio1
-PUNTAJE2 = victorias2 - derrotas2 - empates2 + anotados2 - contra2 + puntos2 + partidos2 - dcinco2 - titulares2 + promedio2
+# Aplicar ponderaciones a las estadísticas
+ponderacion_victorias = 3
+ponderacion_derrotas = -1
+ponderacion_empates = 1
+ponderacion_anotados = 2
+ponderacion_contra = -1
+ponderacion_puntos = 1
+ponderacion_partidos = 2
+ponderacion_dcinco = -1
+ponderacion_titulares = -1
+ponderacion_promedio = 1
+
