@@ -9,9 +9,9 @@ def obtener_estadisticas_equipo(nombre_equipo):
     dcinco = int(input(f"Ingrese el número de derrotas en los últimos cinco partidos de {nombre_equipo}: "))
     titulares = int(input(f"Ingrese el número de jugadores titulares lesionados de {nombre_equipo}: "))
     promedio = float(input(f"Ingrese el promedio de goles por partido de {nombre_equipo}: "))
-    tiros_arco = int(input(f"Ingrese el promedio de tiros al arco por partido de {nombre_equipo}: "))
+    tiros_arco = float(input(f"Ingrese el promedio de tiros al arco por partido de {nombre_equipo}: "))
     posesion = float(input(f"Ingrese el promedio de  porcentaje de posesión del balón por partido de {nombre_equipo}: "))
-    paradas_portero = int(input(f"Ingrese el promedio de paradas del portero por partido de {nombre_equipo}: "))
+    paradas_portero = float(input(f"Ingrese el promedio de paradas del portero por partido de {nombre_equipo}: "))
     return victorias, derrotas, empates, anotados, contra, puntos, vcinco, dcinco, titulares, promedio, tiros_arco, posesion, paradas_portero
 
 def calcular_puntaje(victorias, derrotas, empates, anotados, contra, puntos, vcinco, dcinco, titulares, promedio, tiros_arco, posesion, paradas_portero):
