@@ -85,10 +85,10 @@ while True:
   resultado = determinar_resultado(PUNTAJE1, PUNTAJE2)
   probabilidad_victoria1, probabilidad_empate, probabilidad_victoria2 = calcular_probabilidades(PUNTAJE1, PUNTAJE2)
   
-  print(f"Resultado: {resultado}")
-  print(f"Probabilidad de victoria para {EQUIPO1}: {probabilidad_victoria1:.2f}")
+  print(f"Predicción: {resultado}")
+  print(f"Probabilidad de victoria de {EQUIPO1}: {probabilidad_victoria1:.2f}")
   print(f"Probabilidad de empate: {probabilidad_empate:.2f}")
-  print(f"Probabilidad de victoria para {EQUIPO2}: {probabilidad_victoria2:.2f}")
+  print(f"Probabilidad de victoria de {EQUIPO2}: {probabilidad_victoria2:.2f}")
   
   respuesta = input("¿Desea predecir el resultado de otro partido? (si/no): ").strip().lower()
   if respuesta != "si":
