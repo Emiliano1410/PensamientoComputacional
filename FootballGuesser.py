@@ -4,14 +4,14 @@ def obtener_estadisticas_equipo(nombre_equipo):
     empates = int(input(f"Ingrese el número de empates de {nombre_equipo}: "))
     anotados = int(input(f"Ingrese el número de goles anotados por {nombre_equipo}: "))
     contra = int(input(f"Ingrese el número de goles en contra de {nombre_equipo}: "))
-    puntos = int(input(f"Ingrese el número de puntos del torneo para {nombre_equipo}: "))
-    vcinco = int(input(f"Ingrese el número de victorias en los últimos cinco partidos para {nombre_equipo}: "))
-    dcinco = int(input(f"Ingrese el número de derrotas en los últimos cinco partidos para {nombre_equipo}: "))
-    titulares = int(input(f"Ingrese el número de jugadores titulares lesionados para {nombre_equipo}: "))
-    promedio = float(input(f"Ingrese el promedio de goles por partido para {nombre_equipo}: "))
-    tiros_arco = int(input(f"Ingrese el número de tiros al arco por partido para {nombre_equipo}: "))
-    posesion = float(input(f"Ingrese el promedio de  porcentaje de posesión del balón por partido para {nombre_equipo}: "))
-    paradas_portero = int(input(f"Ingrese el promedio de paradas del portero por partido para {nombre_equipo}: "))
+    puntos = int(input(f"Ingrese el número de puntos del torneo de {nombre_equipo}: "))
+    vcinco = int(input(f"Ingrese el número de victorias en los últimos cinco partidos de {nombre_equipo}: "))
+    dcinco = int(input(f"Ingrese el número de derrotas en los últimos cinco partidos de {nombre_equipo}: "))
+    titulares = int(input(f"Ingrese el número de jugadores titulares lesionados de {nombre_equipo}: "))
+    promedio = float(input(f"Ingrese el promedio de goles por partido de {nombre_equipo}: "))
+    tiros_arco = int(input(f"Ingrese el promedio de tiros al arco por partido de {nombre_equipo}: "))
+    posesion = float(input(f"Ingrese el promedio de  porcentaje de posesión del balón por partido de {nombre_equipo}: "))
+    paradas_portero = int(input(f"Ingrese el promedio de paradas del portero por partido de {nombre_equipo}: "))
     return victorias, derrotas, empates, anotados, contra, puntos, vcinco, dcinco, titulares, promedio, tiros_arco, posesion, paradas_portero
 
 def calcular_puntaje(victorias, derrotas, empates, anotados, contra, puntos, vcinco, dcinco, titulares, promedio, tiros_arco, posesion, paradas_portero):
@@ -47,6 +47,23 @@ def calcular_puntaje(victorias, derrotas, empates, anotados, contra, puntos, vci
     
     return puntaje
 
+def calcular_probabilidades(puntaje_equipo1, puntaje_equipo2):
+    #La probabilidad de empate es inversamente proporcional a la diferencia de puntajes.
+    diferencia_puntajes = abs(puntaje_equipo1 - puntaje_equipo2)
+    probabilidad_empate = 1 / (1 + diferencia_puntajes)
+
+    # Calcular las probabilidades de victoria para cada equipo.
+    probabilidad_victoria_equipo1 = 1 / (1 + 10 ** ((puntaje_equipo2 - puntaje_equipo1) / 400))
+    probabilidad_victoria_equipo2 = 1 / (1 + 10 ** ((puntaje_equipo1 - puntaje_equipo2) / 400))
+
+    suma_probabilidades = probabilidad_victoria_equipo1 + probabilidad_empate + probabilidad_victoria_equipo2
+    probabilidad_victoria_equipo1 /= suma_probabilidades
+    probabilidad_empate /= suma_probabilidades
+    probabilidad_victoria_equipo2 /= suma_probabilidades
+
+    return probabilidad_victoria_equipo1, probabilidad_empate, probabilidad_victoria_equipo2
+
+
 def determinar_resultado(puntaje_equipo1, puntaje_equipo2):
     if puntaje_equipo1 > puntaje_equipo2:
         return f"{EQUIPO1} GANA"
@@ -66,7 +83,13 @@ while True:
   PUNTAJE2 = calcular_puntaje(victorias2, derrotas2, empates2, anotados2, contra2, puntos2, partidos2, dcinco2, titulares2, promedio2, tiros_arco2, posesion2, paradas_portero2)
 
   resultado = determinar_resultado(PUNTAJE1, PUNTAJE2)
-  print(resultado)
+  probabilidad_victoria1, probabilidad_empate, probabilidad_victoria2 = calcular_probabilidades(PUNTAJE1, PUNTAJE2)
+  
+  print(f"Resultado: {resultado}")
+  print(f"Probabilidad de victoria para {EQUIPO1}: {probabilidad_victoria1:.2f}")
+  print(f"Probabilidad de empate: {probabilidad_empate:.2f}")
+  print(f"Probabilidad de victoria para {EQUIPO2}: {probabilidad_victoria2:.2f}")
+  
   respuesta = input("¿Desea predecir el resultado de otro partido? (si/no): ").strip().lower()
   if respuesta != "si":
         break
