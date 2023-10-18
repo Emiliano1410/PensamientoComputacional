@@ -115,19 +115,19 @@ def calcular_probabilidades(puntaje_equipo1, puntaje_equipo2):
 # Esta función determina el resultado de un partido basado en los puntajes de los equipos
 def determinar_resultado(puntaje_equipo1, puntaje_equipo2):
     if puntaje_equipo1 > puntaje_equipo2:
-        return f"{EQUIPO_1} Gana"
+        return f"{equipo_1} Gana"
     elif puntaje_equipo2 > puntaje_equipo1:
-        return f"{EQUIPO_2} Gana"
+        return f"{equipo_2} Gana"
     else:
         return "Empate"
 
 # Bucle principal para ingresar datos de los equipos y realizar predicciones
 while True:
-    EQUIPO_1 = input("Ingrese el nombre del Equipo 1: ")
-    estadisticas_equipo1 = obtener_estadisticas_equipo(EQUIPO_1)
+    equipo_1 = input("Ingrese el nombre del Equipo 1: ")
+    estadisticas_equipo1 = obtener_estadisticas_equipo(equipo_1)
 
-    EQUIPO_2 = input("Ingrese el nombre del Equipo 2: ")
-    estadisticas_equipo2 = obtener_estadisticas_equipo(EQUIPO_2)
+    equipo_2 = input("Ingrese el nombre del Equipo 2: ")
+    estadisticas_equipo2 = obtener_estadisticas_equipo(equipo_2)
 
     PUNTAJE1 = calcular_puntaje(estadisticas_equipo1)
     PUNTAJE2 = calcular_puntaje(estadisticas_equipo2)
@@ -137,9 +137,9 @@ while True:
 
     # Muestra los resultados de la predicción
     print(f"Predicción: {resultado}")
-    print(f"Probabilidad de victoria de {EQUIPO_1}: {probabilidad_victoria_equipo1:.2f}%")
+    print(f"Probabilidad de victoria de {equipo_1}: {probabilidad_victoria_equipo1:.2f}%")
     print(f"Probabilidad de empate: {probabilidad_empate:.2f}%")
-    print(f"Probabilidad de victoria de {EQUIPO_2}: {probabilidad_victoria_equipo2:.2f}%")
+    print(f"Probabilidad de victoria de {equipo_2}: {probabilidad_victoria_equipo2:.2f}%")
 
     respuesta = input("¿Desea predecir el resultado de otro partido? (si/no): ").strip().lower()
     if respuesta != "si":
