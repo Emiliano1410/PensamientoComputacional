@@ -1,11 +1,12 @@
 import math
 
-
+# Esta función obtiene estadísticas de un equipo, como victorias, derrotas, etc.
 def obtener_estadisticas_equipo(nombre_equipo):
     estadisticas_equipo = {}
 
     while True:
         try:
+            # Solicita las estadisticas al usuario y las almacena en un diccionario
             estadisticas_equipo['victorias'] = int(input(
                 f"Ingrese el número de victorias de {nombre_equipo}: "
             ))
@@ -55,8 +56,9 @@ def obtener_estadisticas_equipo(nombre_equipo):
 
     return estadisticas_equipo
 
-
+# Esta función calcula un puntaje para un equipo en base a sus estadísticas
 def calcular_puntaje(estadisticas_equipo):
+    # El puntaje se calcula multiplicando cada estadística por su ponderación y sumando todo
     ponderacion_victorias = 3
     ponderacion_derrotas = -1
     ponderacion_empates = 1
@@ -91,24 +93,26 @@ def calcular_puntaje(estadisticas_equipo):
     
     return puntaje
 
-
+# Esta función calcula las probabilidades de victoria, empate, y derrota entre los equipos
 def calcular_probabilidades(puntaje_equipo1, puntaje_equipo2):
     probabilidad_victoria_equipo1 = 1 / (1 + math.exp((puntaje_equipo2 - puntaje_equipo1) / 100))
     probabilidad_victoria_equipo2 = 1 / (1 + math.exp((puntaje_equipo1 - puntaje_equipo2) / 100))
 
+    # Calcula la diferencia de puntajes entre los equipos
     diferencia_puntajes = abs(probabilidad_victoria_equipo1 - probabilidad_victoria_equipo2)
-    
+
+    # Calcula la probabilidad de empate
     probabilidad_empate = 1 / (1 + math.exp(-diferencia_puntajes / 100))
 
+    # Normaliza las probabilidades para que sumen 100%
     suma_probabilidades = probabilidad_victoria_equipo1 + probabilidad_empate + probabilidad_victoria_equipo2
-
     probabilidad_victoria_equipo1 = (probabilidad_victoria_equipo1 / suma_probabilidades) * 100
     probabilidad_empate = (probabilidad_empate / suma_probabilidades) * 100
     probabilidad_victoria_equipo2 = (probabilidad_victoria_equipo2 / suma_probabilidades) * 100
 
     return probabilidad_victoria_equipo1, probabilidad_empate, probabilidad_victoria_equipo2
 
-
+# Esta función determina el resultado de un partido basado en los puntajes de los equipos
 def determinar_resultado(puntaje_equipo1, puntaje_equipo2):
     if puntaje_equipo1 > puntaje_equipo2:
         return f"{EQUIPO_1} Gana"
@@ -117,6 +121,7 @@ def determinar_resultado(puntaje_equipo1, puntaje_equipo2):
     else:
         return "Empate"
 
+# Bucle principal para ingresar datos de los equipos y realizar predicciones
 while True:
     EQUIPO_1 = input("Ingrese el nombre del Equipo 1: ")
     estadisticas_equipo1 = obtener_estadisticas_equipo(EQUIPO_1)
@@ -130,6 +135,7 @@ while True:
     resultado = determinar_resultado(PUNTAJE1, PUNTAJE2)
     probabilidad_victoria_equipo1, probabilidad_empate, probabilidad_victoria_equipo2 = calcular_probabilidades(PUNTAJE1, PUNTAJE2)
 
+    # Muestra los resultados de la predicción
     print(f"Predicción: {resultado}")
     print(f"Probabilidad de victoria de {EQUIPO_1}: {probabilidad_victoria_equipo1:.2f}%")
     print(f"Probabilidad de empate: {probabilidad_empate:.2f}%")
