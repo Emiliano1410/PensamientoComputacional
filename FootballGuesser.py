@@ -124,8 +124,8 @@ while True:
     EQUIPO_2 = input("Ingrese el nombre del Equipo 2: ")
     estadisticas_equipo2 = obtener_estadisticas_equipo(EQUIPO_2)
 
-    PUNTAJE1 = calcular_puntaje(*estadisticas_equipo1)
-    PUNTAJE2 = calcular_puntaje(*estadisticas_equipo2)
+    PUNTAJE1 = calcular_puntaje(estadisticas_equipo1)
+    PUNTAJE2 = calcular_puntaje(estadisticas_equipo2)
 
     resultado = determinar_resultado(PUNTAJE1, PUNTAJE2)
     probabilidad_victoria_equipo1, probabilidad_empate, probabilidad_victoria_equipo2 = calcular_probabilidades(PUNTAJE1, PUNTAJE2)
